@@ -1,0 +1,64 @@
+
+<!-- Sidebar  -->
+<aside>
+    <nav id="sidebar">
+        <ul class="list-unstyled components navbar-list" style="padding-left: 10px ;">
+            <h3 class="sidebar-header">Trading Star </h3>
+            <hr>
+            <li class="active" id="home">
+                <!-- <i class="fa-solid fa-house"></i> -->
+                <a href="{% url 'home' %} ">
+                    <i class="fa-solid fa-house"></i>
+                    <span class="ml-1"> Home</span>
+                </a>
+                <!-- <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="#">Home 1</a>
+                </li>
+                <li>
+                    <a href="#">Home 2</a>
+                </li>
+                <li>
+                    <a href="#">Home 3</a>
+                </li>
+            </ul> -->
+            </li>
+            <li>
+                <a href="{% url 'portfolio' %} " id="portfolio">
+                    <i class="fa-solid fa-folder"></i>
+                    <span class="ml-1">Portfolio</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'stockdata' %} " id="stockdata">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span class="ml-1">
+                        Stock Data
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'profile' %} " id="profile">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="ml-1"> Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'telegramchannels' %} " id="telegramchannels">
+                    <i class="fa-brands fa-telegram"></i>
+                    <span class="ml-1">Telegram Channels</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'contactus' %} " id="contactus">
+                    <i class="fa-solid fa-id-badge"></i>
+                    <span class="ml-1">Contact</span></a>
+            </li>
+        </ul>
+
+     
+    </nav>
+</aside>
+

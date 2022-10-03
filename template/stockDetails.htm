@@ -1,0 +1,38 @@
+{% extends 'base.htm' %}
+{% block pagehead %} Nifty{% endblock pagehead%}
+{%block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-6 col-lg-6 col-xs-12" style="display: inline-flex;" >
+            <h2>Nifty 50</h2>
+            <p style="margin-left: 15px; padding-top: 10px ;">indicator</p>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-xs-12" style="text-align:right ;">
+            <h2>17600</h2>
+        </div>
+        <div class="col-xl-1 col-lg-1 col-xs-12" style="text-align: left; padding-top: 14px;">
+            <h6>+120</h6>
+        </div>
+    </div>
+    <!-- chart -->
+    <div class="row" >
+        
+        <div class="col-lg-7 bg-dark">
+            <div  class="bg-gradient" style="height: 350px ;" id="niftyChart">
+            
+            </div>
+            <div  class="bg-gradient" style="height: 350px ; margin-top: 10px;" id="niftyOiChart">
+            
+            </div>
+            <div  class="bg-gradient" style="height: 350px ; margin-top: 10px;" id="niftyOiChangeChart">
+            
+            </div>    
+        </div>
+        <div class="col-lg-5 bg-danger"></div>
+    </div>
+
+    
+
+</div>
+
+{% endblock content%}
