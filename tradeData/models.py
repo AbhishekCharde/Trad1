@@ -1,7 +1,7 @@
 from django.db import models
 
-from TradeData.currentValue import currentValueOfStock
-from TradeData.historyData import getStockHistiory
+from .currentValue import currentValueOfStock
+from .historyData import getStockHistiory
 
 
 def getCurrentValueOfStock():
