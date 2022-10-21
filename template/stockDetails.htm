@@ -1,10 +1,10 @@
 {% extends 'base.htm' %}
-{% block pagehead %} Nifty{% endblock pagehead%}
+{% block pagehead %} {{stockName}}{% endblock pagehead%}
 {%block content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xl-6 col-lg-6 col-xs-12" style="display: inline-flex;" >
-            <h2>Nifty 50</h2>
+        <div class="col-xl-6 col-lg-6 col-xs-12" style="display: inline-flex;">
+            <h2>{{stockName}}</h2>
             <p style="margin-left: 15px; padding-top: 10px ;">indicator</p>
         </div>
         <div class="col-xl-5 col-lg-5 col-xs-12" style="text-align:right ;">
@@ -15,10 +15,44 @@
         </div>
     </div>
     <!-- chart -->
-    <div class="row" >
-        
-        <div class="col-lg-7 bg-dark">
-            <div  class="bg-gradient" style="height: 350px ;" id="niftyChart">
+    <div class="row" style="margin-left:2.5px ;">
+        <div class="text-center bg-secondary" style="width:47% ;">
+            PE
+        </div>
+        <div class="text-center bg-secondary" style="width:47%; margin-left: 56px;">
+            CE
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12" style="font-size: 11px;">
+            <table class="table table-bordered border-dark">
+
+                <thead>
+                    <th>OI</th>
+                    <th>change in OI</th>
+                    <th>% change in OI</th>
+                    <th>Traded Volume</th>
+                    <th>implied Volatility</th>
+                    <th>Buy Quantity</th>
+                    <th>Sell Quantity</th>
+                    <th>ask Qty</th>
+                    <th>price</th>
+                    <th>Strike Price</th>
+                    <th>price</th>
+                    <th>ask Qty</th>
+                    <th>Sell Quantity</th>
+                    <th>Buy Quantity</th>
+                    <th>implied Volatility</th>
+                    <th>Traded Volume</th>
+                    <th>% change in OI</th>
+                    <th>change in OI</th>
+                    <th>OI</th>
+                </thead>
+                <tbody id="oiList">
+                    
+                </tbody>
+            </table>
+            <!-- <div  class="bg-gradient" style="height: 350px ;" id="niftyChart">
             
             </div>
             <div  class="bg-gradient" style="height: 350px ; margin-top: 10px;" id="niftyOiChart">
@@ -26,13 +60,45 @@
             </div>
             <div  class="bg-gradient" style="height: 350px ; margin-top: 10px;" id="niftyOiChangeChart">
             
-            </div>    
+            </div>     -->
         </div>
-        <div class="col-lg-5 bg-danger"></div>
+        <!-- <div class="col-lg-5 bg-danger"></div> -->
     </div>
 
-    
+
 
 </div>
 
 {% endblock content%}
+{% block javascripts %}
+<script type="text/javascript">
+    $(document).ready(function () {
+        var x = {{oiData | safe}};
+        for (let i = 0; i < x.length; i++) {
+            console.log(x[i]);
+            $('#oiList').append('<tr>'+
+                '<td>'+ x[i]['PE']['openInterest']+'</td>'+
+                '<td>'+ x[i]['PE']['changeinOpenInterest']+'</td>'+
+                '<td>'+ x[i]['PE']['pchangeinOpenInterest'].toFixed(2)+'</td>'+
+                '<td>'+ x[i]['PE']['totalTradedVolume']+'</td>'+
+                '<td>'+ x[i]['PE']['impliedVolatility']+'</td>'+
+                '<td>'+ x[i]['PE']['totalBuyQuantity']+'</td>'+
+                '<td>'+ x[i]['PE']['totalSellQuantity']+'</td>'+
+                '<td>'+ x[i]['PE']['askQty']+'</td>'+
+                '<td>'+ x[i]['PE']['lastPrice']+'</td>'+
+                '<td>'+ x[i]['strikePrice']+'</td>'+
+                '<td>'+ x[i]['CE']['lastPrice']+'</td>'+
+                '<td>'+ x[i]['CE']['askQty']+'</td>'+
+                '<td>'+ x[i]['CE']['totalSellQuantity']+'</td>'+
+                '<td>'+ x[i]['CE']['totalBuyQuantity']+'</td>'+
+                '<td>'+ x[i]['CE']['impliedVolatility']+'</td>'+
+                '<td>'+ x[i]['CE']['totalTradedVolume']+'</td>'+
+                '<td>'+ x[i]['CE']['pchangeinOpenInterest'].toFixed(2)+'</td>'+
+                '<td>'+ x[i]['CE']['changeinOpenInterest']+'</td>'+
+                '<td>'+ x[i]['CE']['openInterest']+'</td>');
+
+                
+        }
+    });
+</script>
+{% endblock javascripts %}

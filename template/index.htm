@@ -14,7 +14,7 @@
                         <div class="col-7">
 
                             <p class="text-sm mb-0 text-uppercase font-weight-bold"> Nifty</p>
-                            <h3>{{stockprice}}</h3>
+                            <h3 id="niftyValue">{{stockprice}}</h3>
                             <p>+120</p>
 
                         </div>
@@ -63,5 +63,12 @@
 
 {%endblock content%}
 {% block javascript%}
-
+<script>
+    var webSocket = new WebSocket('ws://localhost:8000/ws/some_url/');
+    webSocket.onmessage = function(event){
+        var data = JSON.parse(event.data);
+        console.log(data);
+        document.querySelector('#niftyValue').innerHTML= data.niftyValue;
+    }
+</script>
 {% endblock javascript%}
